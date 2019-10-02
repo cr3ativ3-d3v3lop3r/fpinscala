@@ -20,3 +20,9 @@ lazy val answers = (project in file("answers"))
   .settings(
     name := "answers"
   )
+
+lazy val callum = (project in file("callum"))
+  .settings(commonSettings)
+  .settings(
+    name := "callum"
+  )
