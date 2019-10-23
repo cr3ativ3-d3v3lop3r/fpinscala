@@ -88,6 +88,25 @@ dropWhile[Int](List(0, 1, 2), _ == 1)
 dropWhile[Int](List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), _ < 5)
 dropWhile[Int](List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10), _ > 5)
 
+// Exercise 3.5.1
+
+// Improve drop while with currying, so that data types can be inferred by the
+// Scala compiler.
+
+def dropWhileCurried[A]: List[A] => (A => Boolean) => List[A] = {
+  case x :: xs => f =>
+    if (f(x))
+      dropWhileCurried(xs)(f)
+    else
+      x :: dropWhileCurried(xs)(f)
+  case Nil => _ => Nil
+}
+
+dropWhileCurried(Nil)(_ == 0)
+dropWhileCurried(List(0, 1, 2))(_ == 1)
+dropWhileCurried(List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10))(_ < 5)
+dropWhileCurried(List(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10))(_ > 5)
+
 // Exercise 3.6
 
 // Not everything works out so nicely. Implement a function, init, that returns a
