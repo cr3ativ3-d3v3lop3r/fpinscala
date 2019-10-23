@@ -23,6 +23,8 @@ val x = List(1, 2, 3, 4, 5) match {
   case _ => 101
 }
 
+// The answer is 3
+
 // Exercise 3.2
 
 // Implement the function tail for removing the first element of a List.
